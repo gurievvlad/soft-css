@@ -1,0 +1,82 @@
+.container, .container-fluid
+  display: flex
+  flex-flow: column
+  justify-content: start
+
+.grid
+  display: grid
+  grid-template-columns: repeat(12, 1fr)
+
+.row
+  display: flex
+  flex-flow: wrap
+
+[class*="col-"]
+  display: flex
+  flex-flow: column
+  max-width: 100%
+
+$i: 0
+$breakpoints-list: (null, null, 16px), (sm, 540px, 20px), (md, 768px, 30px), (lg, 992px, 30px), (xl, 1200px, 40px) !default
+
+@each $prefix, $width, $padding in $breakpoints-list
+  $i: $i + 1
+  @if ($width)
+    @media (min-width: #{$width})
+      @if ($i == length($breakpoints-list))
+        .container-fluid
+          padding-left: $padding * 2
+          padding-right: $padding * 2
+        .container
+          padding-left: calc(50% - #{($width / 2) - ($padding * 2)})
+          padding-right: calc(50% - #{($width / 2) - ($padding * 2)})
+      @else
+        .container, .container-fluid
+          padding-left: $padding * 2
+          padding-right: $padding * 2
+      .grid-gap, .grid
+        column-gap: $padding
+        row-gap: $padding
+      .row
+        margin-left: -$padding / 2
+        margin-right: -$padding / 2
+        > [class*="col-"]
+          padding-left: $padding / 2
+          padding-right: $padding / 2
+        > .col-#{$prefix}-auto
+          width: auto
+        > .col-#{$prefix}-fill
+          flex: 1
+      @for $i from 1 through 12
+        .grid > .col-#{$prefix}-#{$i}
+          grid-column: span $i
+        .row
+          > .col-#{$prefix}-#{$i}
+            width: 100%/12 * $i
+          > .offset-#{$prefix}-#{$i}
+            margin-left: 100%/12 * $i
+  @else
+    .container, .container-fluid
+      padding-left: $padding * 2
+      padding-right: $padding * 2
+    .grid-gap, .grid
+      column-gap: $padding
+      row-gap: $padding
+    .row
+      margin-left: -$padding / 2
+      margin-right: -$padding / 2
+      > [class*="col-"]
+        padding-left: $padding / 2
+        padding-right: $padding / 2
+      > .col-auto
+        width: auto
+      > .col-fill
+        flex: 1
+    @for $i from 1 through 12
+      .grid > .col-#{$i}
+        grid-column: span $i
+      .row
+        > .col-#{$i}
+          width: 100%/12 * $i
+        > .offset-#{$i}
+          margin-left: 100%/12 * $i

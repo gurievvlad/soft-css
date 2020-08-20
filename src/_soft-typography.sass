@@ -1,0 +1,31 @@
+h1, h2, h3
+  margin-bottom: .5em
+
+$titleSizes: (h1, 4.5), (h2, 3), (h3, 2.25), (h4, 1.5), (h5, 1), (h6, 1) !default
+
+@each $title, $size in $titleSizes
+  #{$title}
+    font-size: #{$size}rem
+
+a
+  display: inline
+  color: inherit
+  text-decoration: none
+  font-weight: inherit
+  font-size: inherit
+  &:hover
+    text-decoration: none
+
+p + p
+  margin-top: 1em
+
+button,
+.button,
+[type="submit"],
+[type="button"]
+  display: inline-flex
+  text-align: center
+  justify-content: center
+  align-items: center
+  padding: .5em
+  border: none

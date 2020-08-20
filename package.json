@@ -1,0 +1,33 @@
+{
+  "name": "soft-css",
+  "version": "1.0.0",
+  "description": "Soft CSS is a good blank for any project. It will reset browser styles and add a grid.",
+  "main": "src/soft-css.sass",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss-help": "node-sass --help",
+    "scss-dev": "node-sass --watch src/soft-css.sass dist/soft.css",
+    "scss-prod": "node-sass  src/soft-css.sass dist/soft.css --output-style compressed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gurievvlad/soft-css.git"
+  },
+  "keywords": [
+    "sass",
+    "styles",
+    "soft-css",
+    "css",
+    "grid",
+    "flexbox"
+  ],
+  "author": "Guriev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gurievvlad/soft-css/issues"
+  },
+  "homepage": "https://github.com/gurievvlad/soft-css#readme",
+  "devDependencies": {
+    "node-sass": "^4.14.1"
+  }
+}

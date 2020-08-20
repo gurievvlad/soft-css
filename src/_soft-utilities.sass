@@ -1,0 +1,37 @@
+@each $block-alignment in align-items, justify-content, justify-items, align-self
+  .#{$block-alignment}-start
+    #{$block-alignment}: flex-start
+
+  .#{$block-alignment}-center
+    #{$block-alignment}: center
+
+  .#{$block-alignment}-end
+    #{$block-alignment}: flex-end
+
+  .#{$block-alignment}-unset
+    #{$block-alignment}: unset
+
+  @if($block-alignment == justify-content)
+
+    .#{$block-alignment}-around
+      justify-content: space-around
+
+    .#{$block-alignment}-between
+      justify-content: space-between
+
+    .#{$block-alignment}-evenly
+      justify-content: space-evenly
+
+@each $display-mode in none, block, flex, grid, inline-block, inline-flex
+  .d-#{$display-mode}
+    display: $display-mode
+
+@each $value in 10, 25, 50, 75, 100
+  .h-#{$value}
+    height: #{$value + '%'}
+  .w-#{$value}
+    width: #{$value + '%'}
+
+@each $text-align in left, center, right
+  .text-align-#{$text-align}
+    text-align: $text-align
