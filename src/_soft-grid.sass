@@ -47,14 +47,15 @@ $breakpoints-list: (null, null, 16px), (sm, 540px, 20px), (md, 768px, 30px), (lg
           width: auto
         > .col-#{$prefix}-fill
           flex: 1
-      @for $i from 1 through 12
-        .grid > .col-#{$prefix}-#{$i}
-          grid-column: span $i
+      @for $index from 1 through 12
+        .grid > .col-#{$prefix}-#{$index}
+          grid-column: span $index
         .row
-          > .col-#{$prefix}-#{$i}
-            width: 100%/12 * $i
-          > .offset-#{$prefix}-#{$i}
-            margin-left: 100%/12 * $i
+          > .col-#{$prefix}-#{$index}
+            width: 100%/12 * $index
+          @if ($index != 12)
+            > .offset-#{$prefix}-#{$index}
+              margin-left: 100%/12 * $index
   @else
     .container, .container-fluid
       padding-left: $padding * 2
@@ -72,11 +73,12 @@ $breakpoints-list: (null, null, 16px), (sm, 540px, 20px), (md, 768px, 30px), (lg
         width: auto
       > .col-fill
         flex: 1
-    @for $i from 1 through 12
-      .grid > .col-#{$i}
-        grid-column: span $i
+    @for $index from 1 through 12
+      .grid > .col-#{$index}
+        grid-column: span $index
       .row
-        > .col-#{$i}
-          width: 100%/12 * $i
-        > .offset-#{$i}
-          margin-left: 100%/12 * $i
+        > .col-#{$index}
+          width: 100%/12 * $index
+        @if ($index != 12)
+          > .offset-#{$index}
+            margin-left: 100%/12 * $index
